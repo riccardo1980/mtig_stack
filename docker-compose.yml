@@ -1,0 +1,32 @@
+version: "2"
+services:
+  # mosquitto:
+  telegraf:
+    image: telegraf:latest
+    volumes:
+     - ./telegraf_config/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    links:
+      - influxdb:influxdb
+
+  influxdb:
+    image: influxdb:latest
+    volumes:
+      - influxdb-storage:/var/lib/influxdb
+      - ./influxdb_config/influxdb.conf:/etc/influxdb/influxdb.conf:ro
+    command:
+      - '-config'
+      - '/etc/influxdb/influxdb.conf'
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - 3001:3000
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    links:
+      - influxdb:influxdb
+
+volumes:
+  influxdb-storage:
+  grafana-storage:  
