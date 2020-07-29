@@ -4,7 +4,7 @@ services:
   telegraf:
     image: telegraf:latest
     volumes:
-     - ./telegraf_config/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+     - ./configs/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
     links:
       - influxdb:influxdb
 
@@ -12,7 +12,7 @@ services:
     image: influxdb:latest
     volumes:
       - influxdb-storage:/var/lib/influxdb
-      - ./influxdb_config/influxdb.conf:/etc/influxdb/influxdb.conf:ro
+      - ./configs/influxdb/influxdb.conf:/etc/influxdb/influxdb.conf:ro
     command:
       - '-config'
       - '/etc/influxdb/influxdb.conf'
