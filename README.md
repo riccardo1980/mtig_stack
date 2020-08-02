@@ -2,8 +2,8 @@
 Version 0.1.0
 
 ## Features  
-Hardware usage metrics (cpu, disk) are collected from local host by telegraf and stored in InfluxDB.
-Grafana can be used to data retrieval and visualisation.  
+Hardware usage metrics (cpu, disk) are collected from local host by __telegraf__ and stored in __InfluxDB__.
+__Grafana__ can be used for data visualisation.  
 
 ## Components  
   
@@ -13,7 +13,7 @@ Grafana can be used to data retrieval and visualisation.
 
 ## Configuration
 ### Services launch
-```
+```Bash
 docker compose -f docker-compose.yml up -d
 ```  
 
@@ -27,7 +27,7 @@ Select "Configuration" -> "Data Source" or blue button "Data Source"
   * URL: http://influxdb:8086
   * database: telegraf
 
-Save & Test
+At the bottom of the page, select "Save & Test" button.
 
 ### Configure a new dashboard
 ![img](imgs/configure_dashboard.png)
